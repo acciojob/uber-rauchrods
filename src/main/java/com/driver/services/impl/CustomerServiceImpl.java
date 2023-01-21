@@ -107,10 +107,10 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-		if(tripBooking.getTripStatus()==TripStatus.CANCELED || tripBooking.getTripStatus()==TripStatus.COMPLETED){
+		if(tripBooking.getStatus()==TripStatus.CANCELED || tripBooking.getStatus()==TripStatus.COMPLETED){
 			return;
 		}
-		tripBooking.setTripStatus(TripStatus.CANCELED);
+		tripBooking.setStatus(TripStatus.CANCELED);
 
 		Driver driver = tripBooking.getDriver();
 		driver.getCab().setAvailable(true);
@@ -148,10 +148,10 @@ public class CustomerServiceImpl implements CustomerService {
 		}
 
           TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
-		  if(tripBooking.getTripStatus()==TripStatus.COMPLETED || tripBooking.getTripStatus()==TripStatus.CANCELED){
+		  if(tripBooking.getStatus()==TripStatus.COMPLETED || tripBooking.getStatus()==TripStatus.CANCELED){
 			  return;
 		  }
-		tripBooking.setTripStatus(TripStatus.COMPLETED);
+		tripBooking.setStatus(TripStatus.COMPLETED);
           Driver driver = tripBooking.getDriver();
 		  driver.getCab().setAvailable(true);
 

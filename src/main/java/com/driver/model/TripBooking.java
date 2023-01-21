@@ -72,11 +72,11 @@ public class TripBooking {
         this.distanceInKm = distanceInKm;
     }
 
-    public TripStatus getTripStatus() {
+    public TripStatus getStatus() {
         return status;
     }
 
-    public void setTripStatus(TripStatus status) {
+    public void setStatus(TripStatus status) {
         this.status = status;
     }
 
