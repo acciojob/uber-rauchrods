@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
 		boolean isdriveravailable=false;
          Driver availabledriver=null;
 		for(Driver driver: driverList){
-			if(driver.getCab().isAvailable()){
+			if(driver.getCab().getAvailable()){
 				isdriveravailable=true;
 				availabledriver=driver;
 				break;
