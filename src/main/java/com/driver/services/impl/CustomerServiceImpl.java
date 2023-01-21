@@ -102,6 +102,10 @@ public class CustomerServiceImpl implements CustomerService {
 	public void cancelTrip(Integer tripId){
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
 
+		if(!tripBookingRepository2.findById(tripId).isPresent()){
+			return;
+		}
+
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
 		if(tripBooking.getStatus()==TripStatus.CANCELED || tripBooking.getStatus()==TripStatus.COMPLETED){
 			return;
@@ -138,6 +142,11 @@ public class CustomerServiceImpl implements CustomerService {
 	@Override
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
+
+		if(!tripBookingRepository2.findById(tripId).isPresent()){
+			return;
+		}
+
           TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
 		  if(tripBooking.getStatus()==TripStatus.COMPLETED || tripBooking.getStatus()==TripStatus.CANCELED){
 			  return;
