@@ -103,6 +103,9 @@ public class CustomerServiceImpl implements CustomerService {
 		//Cancel the trip having given trip Id and update TripBooking attributes accordingly
 
 		TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
+		if(tripBooking.getStatus()==TripStatus.CANCELED || tripBooking.getStatus()==TripStatus.COMPLETED){
+			return;
+		}
 		tripBooking.setStatus(TripStatus.CANCELED);
 
 		Driver driver = tripBooking.getDriver();
@@ -136,6 +139,9 @@ public class CustomerServiceImpl implements CustomerService {
 	public void completeTrip(Integer tripId){
 		//Complete the trip having given trip Id and update TripBooking attributes accordingly
           TripBooking tripBooking = tripBookingRepository2.findById(tripId).get();
+		  if(tripBooking.getStatus()==TripStatus.COMPLETED || tripBooking.getStatus()==TripStatus.CANCELED){
+			  return;
+		  }
 		tripBooking.setStatus(TripStatus.COMPLETED);
           Driver driver = tripBooking.getDriver();
 		  driver.getCab().setAvailable(true);
