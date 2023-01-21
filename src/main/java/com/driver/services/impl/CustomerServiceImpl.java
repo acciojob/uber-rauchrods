@@ -108,9 +108,27 @@ public class CustomerServiceImpl implements CustomerService {
 		Driver driver = tripBooking.getDriver();
 		driver.getCab().setAvailable(true);
 
-		driverRepository2.save(driver);
+//		driverRepository2.save(driver);
 
-//		tripBookingRepository2.save(tripBooking);
+		List<TripBooking> tripBookingList = driver.getTripBookings();
+		for(TripBooking trip: tripBookingList){
+			if(trip.getTripBookingId()==tripBooking.getTripBookingId()){
+				trip.setStatus(TripStatus.COMPLETED);
+				break;
+			}
+		}
+
+
+		List<TripBooking> tripBookingList1 = tripBooking.getCustomer().getTripBookings();
+		for(TripBooking trip: tripBookingList1){
+			if(trip.getTripBookingId()==tripBooking.getTripBookingId()){
+				trip.setStatus(TripStatus.COMPLETED);
+				break;
+			}
+		}
+
+
+		tripBookingRepository2.save(tripBooking);
 
 	}
 
@@ -121,6 +139,26 @@ public class CustomerServiceImpl implements CustomerService {
 		tripBooking.setStatus(TripStatus.COMPLETED);
           Driver driver = tripBooking.getDriver();
 		  driver.getCab().setAvailable(true);
+
+         List<TripBooking> tripBookingList = driver.getTripBookings();
+		 for(TripBooking trip: tripBookingList){
+			 if(trip.getTripBookingId()==tripBooking.getTripBookingId()){
+				 trip.setStatus(TripStatus.COMPLETED);
+				 break;
+			 }
+		 }
+
+
+		List<TripBooking> tripBookingList1 = tripBooking.getCustomer().getTripBookings();
+		for(TripBooking trip: tripBookingList1){
+			if(trip.getTripBookingId()==tripBooking.getTripBookingId()){
+				trip.setStatus(TripStatus.COMPLETED);
+				break;
+			}
+		}
+
+
+
 
 //		  driverRepository2.save(driver);
 
