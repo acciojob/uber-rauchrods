@@ -85,7 +85,10 @@ public class CustomerServiceImpl implements CustomerService {
 				driver.setTripBookings(tripBookingList1);
 
 
-				tripBookingRepository2.save(tripBooking);
+				driverRepository2.save(driver);
+				customerRepository2.save(customer);
+
+//				tripBookingRepository2.save(tripBooking);
 
 
 				break;
@@ -95,10 +98,6 @@ public class CustomerServiceImpl implements CustomerService {
 		if(isdriveravailable==false){
 			throw new Exception("No cab available!");
 		}
-
-
-//		customerRepository2.save(customer);
-//		driverRepository2.save(availabledriver);
 
 
      return tripBooking;
