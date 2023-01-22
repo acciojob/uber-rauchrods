@@ -118,7 +118,7 @@ public class CustomerServiceImpl implements CustomerService {
 		Driver driver = tripBooking.getDriver();
 		driver.getCab().setAvailable(true);
 		tripBooking.setBill(0);
-		tripBooking.getCustomer().getTripBookings().remove(tripBooking);
+//		tripBooking.getCustomer().getTripBookings().remove(tripBooking);
 
 //		driverRepository2.save(driver);
 
